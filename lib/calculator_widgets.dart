@@ -104,6 +104,7 @@ class CalculatorButtonPad extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       child: Column(
         children: [
+          // 1. Satir: Tamamen bilimsel (5 Buton)
           _expandedRow([
             _btn('sin(', CalcButtonStyle.scientific),
             _btn('cos(', CalcButtonStyle.scientific),
@@ -111,35 +112,40 @@ class CalculatorButtonPad extends StatelessWidget {
             _btn('log(', CalcButtonStyle.scientific),
             _btn('sqrt(', CalcButtonStyle.scientific),
           ]),
+          // 2. Satir: Matematik yonetimi (5 Buton)
           _expandedRow([
-            _btn('^', CalcButtonStyle.scientific),
+            _btn('C', CalcButtonStyle.clear),
             _btn('(', CalcButtonStyle.scientific),
             _btn(')', CalcButtonStyle.scientific),
+            _btn('^', CalcButtonStyle.scientific),
             _btn('⌫', CalcButtonStyle.delete_),
-            _btn('C', CalcButtonStyle.clear),
           ]),
+          // 3. Satir: Sayilar ve Bolme (4 Buton - Genis)
           _expandedRow([
             _btn('7', CalcButtonStyle.numeric),
             _btn('8', CalcButtonStyle.numeric),
             _btn('9', CalcButtonStyle.numeric),
             _btn('÷', CalcButtonStyle.operator_),
           ]),
+          // 4. Satir: Sayilar ve Carpma (4 Buton - Genis)
           _expandedRow([
             _btn('4', CalcButtonStyle.numeric),
             _btn('5', CalcButtonStyle.numeric),
             _btn('6', CalcButtonStyle.numeric),
             _btn('×', CalcButtonStyle.operator_),
           ]),
+          // 5. Satir: Sayilar ve Cikarma (4 Buton - Genis)
           _expandedRow([
             _btn('1', CalcButtonStyle.numeric),
             _btn('2', CalcButtonStyle.numeric),
             _btn('3', CalcButtonStyle.numeric),
             _btn('-', CalcButtonStyle.operator_),
           ]),
+          // 6. Satir: Sifir, Nokta, Esittir ve Toplama (4 Buton - Genis)
           _expandedRow([
-            _btn('0', CalcButtonStyle.numeric),
             _btn('.', CalcButtonStyle.numeric),
-            _btn('=', CalcButtonStyle.equals),
+            _btn('0', CalcButtonStyle.numeric),
+            _btn('=', CalcButtonStyle.equals, flex: 2), // Esittir butonu daha on planda
             _btn('+', CalcButtonStyle.operator_),
           ]),
         ],
