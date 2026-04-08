@@ -1,8 +1,8 @@
-# 🧮 Flutter Scientific Calculator (Pro)
+#  Flutter Scientific Calculator (Pro)
 
 A highly polished, premium native Scientific Calculator app built with Flutter and Dart. This project has been upgraded to a "Pro" version featuring advanced error handling, comprehensive history tracking, a modern 5-column layout, and haptic feedback.
 
-## 🌟 Pro Features
+##  Pro Features
 
 *   **Dark Premium Glassmorphism UI**: High-end true black gradient UI (`#0F172A` to `#020617`) with beautifully contrasting blurred glass panels and glowing operator buttons.
 *   **5-Column Scientific Layout**: A reimagined, highly logical 5-column layout for scientific operations, providing a cleaner grouping of operators compared to standard 4-column calculators.
@@ -12,7 +12,7 @@ A highly polished, premium native Scientific Calculator app built with Flutter a
 *   **Large Number Formatting**: Automatically formats large numbers exceeding 10 digits into Scientific Notation or separates large integers with commas using the `intl` package.
 *   **Native Splash Screen**: Implements a sleek, dark-themed native boot screen using the `flutter_native_splash` package for instantaneous startup feedback.
 
-## 🚀 Built With
+##  Built With
 
 *   **Language**: Dart 3
 *   **Framework**: Flutter
@@ -23,7 +23,7 @@ A highly polished, premium native Scientific Calculator app built with Flutter a
     *   [`flutter_native_splash`](https://pub.dev/packages/flutter_native_splash) - Zero-delay start screen
 
 
-## 🛠️ Architecture
+##  Architecture
 
 Maintained highly decoupled code architecture for scalability:
 
@@ -32,7 +32,7 @@ Maintained highly decoupled code architecture for scalability:
 *   `calculator_widgets.dart`: The body—comprises the blurred `CalculatorDisplay` and the responsive `CalculatorButtonPad`.
 *   `calculator_button.dart`: The tactile component—manages stateful press animations, glassmorphic rendering, and haptic engine callbacks.
 
-## 🏃‍♂️ How to Run
+##  How to Run
 
 1. Clone the repository:
    ```bash
