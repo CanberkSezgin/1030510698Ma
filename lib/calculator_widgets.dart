@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'calculator_button.dart';
 
-/// The display area of the calculator showing the current expression
-/// and the computed result. Features a subtle glass blur effect.
 class CalculatorDisplay extends StatelessWidget {
   final String expression;
   final String result;
@@ -41,17 +39,17 @@ class CalculatorDisplay extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                // History Icon at top right of display
+                // gecmis ikonu
                 Align(
                   alignment: Alignment.topRight,
                   child: IconButton(
                     icon: Icon(Icons.history, color: Colors.white.withValues(alpha: 0.4)),
                     onPressed: onHistoryTap,
-                    tooltip: 'Show History',
+                    tooltip: 'Gecmis',
                   ),
                 ),
                 const Spacer(),
-                // Expression text (scrollable for long expressions)
+                // islem satiri
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   reverse: true,
@@ -66,7 +64,7 @@ class CalculatorDisplay extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                // Result text — scales down for very long numbers
+                // sonuc satiri
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   alignment: Alignment.centerRight,
@@ -92,7 +90,6 @@ class CalculatorDisplay extends StatelessWidget {
   }
 }
 
-/// The button pad containing a new Pro 5-column layout
 class CalculatorButtonPad extends StatelessWidget {
   final Function(String) onButtonPressed;
 
@@ -107,7 +104,6 @@ class CalculatorButtonPad extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       child: Column(
         children: [
-          // Row 1: Scientific functions (5 columns layout)
           _expandedRow([
             _btn('sin(', CalcButtonStyle.scientific),
             _btn('cos(', CalcButtonStyle.scientific),
@@ -115,7 +111,6 @@ class CalculatorButtonPad extends StatelessWidget {
             _btn('log(', CalcButtonStyle.scientific),
             _btn('sqrt(', CalcButtonStyle.scientific),
           ]),
-          // Row 2: Secondary ops & clear (5 columns layout)
           _expandedRow([
             _btn('^', CalcButtonStyle.scientific),
             _btn('(', CalcButtonStyle.scientific),
@@ -123,28 +118,24 @@ class CalculatorButtonPad extends StatelessWidget {
             _btn('⌫', CalcButtonStyle.delete_),
             _btn('C', CalcButtonStyle.clear),
           ]),
-          // Row 3: 7, 8, 9, ÷ (4 columns for the rest, looks cleaner for nums)
           _expandedRow([
             _btn('7', CalcButtonStyle.numeric),
             _btn('8', CalcButtonStyle.numeric),
             _btn('9', CalcButtonStyle.numeric),
             _btn('÷', CalcButtonStyle.operator_),
           ]),
-          // Row 4: 4, 5, 6, ×
           _expandedRow([
             _btn('4', CalcButtonStyle.numeric),
             _btn('5', CalcButtonStyle.numeric),
             _btn('6', CalcButtonStyle.numeric),
             _btn('×', CalcButtonStyle.operator_),
           ]),
-          // Row 5: 1, 2, 3, -
           _expandedRow([
             _btn('1', CalcButtonStyle.numeric),
             _btn('2', CalcButtonStyle.numeric),
             _btn('3', CalcButtonStyle.numeric),
             _btn('-', CalcButtonStyle.operator_),
           ]),
-          // Row 6: 0, ., =, +
           _expandedRow([
             _btn('0', CalcButtonStyle.numeric),
             _btn('.', CalcButtonStyle.numeric),

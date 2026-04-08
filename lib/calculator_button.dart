@@ -2,9 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-/// Enum-like class defining visual categories for calculator buttons.
-/// Each category now carries gradient, glow, and glass properties
-/// for the premium dark-glassmorphism design language.
 enum CalcButtonStyle {
   scientific,
   numeric,
@@ -14,7 +11,6 @@ enum CalcButtonStyle {
   equals,
 }
 
-/// Returns the gradient colors for a given button style.
 List<Color> gradientForStyle(CalcButtonStyle style) {
   switch (style) {
     case CalcButtonStyle.scientific:
@@ -50,7 +46,6 @@ List<Color> gradientForStyle(CalcButtonStyle style) {
   }
 }
 
-/// Returns the border color for a given button style (glass effect).
 Color borderForStyle(CalcButtonStyle style) {
   switch (style) {
     case CalcButtonStyle.scientific:
@@ -68,7 +63,6 @@ Color borderForStyle(CalcButtonStyle style) {
   }
 }
 
-/// Returns optional glow shadow for elevated button styles.
 List<BoxShadow> glowForStyle(CalcButtonStyle style) {
   switch (style) {
     case CalcButtonStyle.operator_:
@@ -92,8 +86,6 @@ List<BoxShadow> glowForStyle(CalcButtonStyle style) {
   }
 }
 
-/// A premium glassmorphism calculator button with press animation,
-/// gradient fill, frosted-glass border, and optional glow shadow.
 class CalculatorButton extends StatefulWidget {
   final String label;
   final CalcButtonStyle style;
@@ -124,7 +116,7 @@ class _CalculatorButtonState extends State<CalculatorButton>
       vsync: this,
       duration: const Duration(milliseconds: 100),
     );
-    // Adjusted scale down to 0.95 for a finer tactile feel
+    // basma animasyonu icin kuculme efekti
     _scaleAnim = Tween<double>(begin: 1.0, end: 0.95).animate(
       CurvedAnimation(parent: _animController, curve: Curves.easeInOut),
     );
@@ -137,7 +129,7 @@ class _CalculatorButtonState extends State<CalculatorButton>
   }
 
   void _handleTapDown(TapDownDetails _) {
-    HapticFeedback.lightImpact(); // Subtly vibrate on press down
+    HapticFeedback.lightImpact(); // titresim efekti
     _animController.forward();
   }
   

@@ -6,7 +6,7 @@ import 'calculator_screen.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Lock status bar style to match our dark premium theme
+  // ust bildirim cubugunun rengini ayarladik
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -17,7 +17,6 @@ void main() {
   runApp(const ScientificCalculatorApp());
 }
 
-/// Root widget for the Scientific Calculator application.
 class ScientificCalculatorApp extends StatelessWidget {
   const ScientificCalculatorApp({super.key});
 

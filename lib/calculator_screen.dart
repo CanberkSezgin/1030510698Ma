@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'calculator_logic.dart';
 import 'calculator_widgets.dart';
 
-/// The main screen of the Scientific Calculator (Pro Version).
 class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({super.key});
 
@@ -34,6 +33,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     });
   }
 
+  // gecmis menusunu gosteren bottom sheet
   void _showHistoryModal() {
     showModalBottomSheet(
       context: context,
@@ -56,7 +56,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'History',
+                      'Gecmis',
                       style: GoogleFonts.inter(
                         color: Colors.white,
                         fontSize: 24,
@@ -68,7 +68,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       child: history.isEmpty
                           ? Center(
                               child: Text(
-                                'No history yet.',
+                                'Henuz gecmis kaydi yok.',
                                 style: GoogleFonts.inter(
                                   color: Colors.white.withValues(alpha: 0.4),
                                   fontSize: 16,
@@ -93,7 +93,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                                     setState(() {
                                       _logic.restoreHistory(item['expression'] ?? '');
                                     });
-                                    Navigator.pop(context);
+                                    Navigator.pop(context); // pencereyi kapat
                                   },
                                 );
                               },
@@ -117,13 +117,12 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF0F172A), Color(0xFF020617)],
+            colors: [Color(0xFF0F172A), Color(0xFF020617)], // arkaplan renkleri
           ),
         ),
         child: SafeArea(
           child: Column(
             children: [
-              // Pro App Header
               Padding(
                 padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
                 child: Row(
@@ -158,7 +157,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   builder: (context, constraints) {
                     return Column(
                       children: [
-                        // Display Box
                         SizedBox(
                           height: constraints.maxHeight * 0.35,
                           child: CalculatorDisplay(
@@ -167,7 +165,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                             onHistoryTap: _showHistoryModal,
                           ),
                         ),
-                        // Soft divider
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 32),
                           child: Divider(
@@ -175,7 +172,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                             color: Colors.white.withValues(alpha: 0.05),
                           ),
                         ),
-                        // 5-Column Pro Button Pad
                         Expanded(
                           child: CalculatorButtonPad(
                             onButtonPressed: _onButtonPressed,
