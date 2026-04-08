@@ -1,0 +1,11 @@
+flutter_native_splash:
+  color: "#0F172A"
+  # Since we don't have a specific image asset, we can use a very minimal text or let it just be a bold color screen.
+  # We will just use the color background for a sleek native feel.
+  
+  # Ensure it covers dark mode as well
+  color_dark: "#0F172A"
+
+  android_12:
+    color: "#0F172A"
+    color_dark: "#0F172A"

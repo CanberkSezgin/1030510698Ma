@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 /// Enum-like class defining visual categories for calculator buttons.
 /// Each category now carries gradient, glow, and glass properties
@@ -123,7 +124,8 @@ class _CalculatorButtonState extends State<CalculatorButton>
       vsync: this,
       duration: const Duration(milliseconds: 100),
     );
-    _scaleAnim = Tween<double>(begin: 1.0, end: 0.92).animate(
+    // Adjusted scale down to 0.95 for a finer tactile feel
+    _scaleAnim = Tween<double>(begin: 1.0, end: 0.95).animate(
       CurvedAnimation(parent: _animController, curve: Curves.easeInOut),
     );
   }
@@ -134,7 +136,11 @@ class _CalculatorButtonState extends State<CalculatorButton>
     super.dispose();
   }
 
-  void _handleTapDown(TapDownDetails _) => _animController.forward();
+  void _handleTapDown(TapDownDetails _) {
+    HapticFeedback.lightImpact(); // Subtly vibrate on press down
+    _animController.forward();
+  }
+  
   void _handleTapUp(TapUpDetails _) {
     _animController.reverse();
     widget.onPressed();
@@ -203,9 +209,8 @@ class _CalculatorButtonState extends State<CalculatorButton>
       );
     }
 
-    // Operator and equals text is a touch bolder
     final bool isBold = widget.style == CalcButtonStyle.operator_ ||
-        widget.style == CalcButtonStyle.equals;
+        widget.style == CalcButtonStyle.equals || widget.label == 'C';
 
     return Text(
       widget.label,
