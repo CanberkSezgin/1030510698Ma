@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'calculator_logic.dart';
 import 'calculator_widgets.dart';
 
@@ -36,47 +37,71 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: const Text(
-          'Scientific Calculator',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.w400,
-            letterSpacing: 0.5,
+      // The high-end dark premium gradient background
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color(0xFF0F172A), Color(0xFF020617)],
           ),
         ),
-        backgroundColor: Colors.black,
-        elevation: 0,
-      ),
-      body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return Column(
-              children: [
-                // Display area takes up ~35% of available height
-                SizedBox(
-                  height: constraints.maxHeight * 0.30,
-                  child: CalculatorDisplay(
-                    expression: _logic.expression,
-                    result: _logic.result,
-                  ),
+        child: SafeArea(
+          child: Column(
+            children: [
+              // Subtle modern app bar area
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                child: Row(
+                  children: [
+                    Text(
+                      'Scientific Calculator',
+                      style: GoogleFonts.inter(
+                        color: Colors.white.withValues(alpha: 0.8),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 0.5,
+                      ),
+                    ),
+                  ],
                 ),
-                // Divider between display and buttons
-                Container(
-                  height: 1,
-                  color: Colors.grey.withValues(alpha: 0.2),
+              ),
+              // Main content
+              Expanded(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return Column(
+                      children: [
+                        // Display area takes ~35% of height
+                        SizedBox(
+                          height: constraints.maxHeight * 0.35,
+                          child: CalculatorDisplay(
+                            expression: _logic.expression,
+                            result: _logic.result,
+                          ),
+                        ),
+                        // Soft divider
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 32),
+                          child: Divider(
+                            height: 1,
+                            color: Colors.white.withValues(alpha: 0.05),
+                          ),
+                        ),
+                        // Button pad takes up the remaining height
+                        // Using Expanded so rows scale properly
+                        Expanded(
+                          child: CalculatorButtonPad(
+                            onButtonPressed: _onButtonPressed,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
-                // Button pad takes up the remaining ~65%
-                Expanded(
-                  child: CalculatorButtonPad(
-                    onButtonPressed: _onButtonPressed,
-                  ),
-                ),
-              ],
-            );
-          },
+              ),
+            ],
+          ),
         ),
       ),
     );

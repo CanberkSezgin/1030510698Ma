@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'calculator_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Lock status bar style to match dark theme
+  // Lock status bar style to match our dark premium theme
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -27,10 +28,13 @@ class ScientificCalculatorApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: Colors.black,
+        scaffoldBackgroundColor: const Color(0xFF020617),
+        textTheme: GoogleFonts.interTextTheme(
+          ThemeData.dark().textTheme,
+        ),
         colorScheme: const ColorScheme.dark(
-          surface: Colors.black,
-          primary: Color(0xFFFF9500),
+          surface: Color(0xFF0F172A),
+          primary: Color(0xFFFF6B00),
         ),
         useMaterial3: true,
       ),
